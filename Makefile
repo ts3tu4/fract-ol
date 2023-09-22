@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fractol.h
+NAME = fractol
 
 SRCS = main.c\
 		check_input/check_input.c
@@ -19,24 +19,24 @@ CC = cc
 
 HEAD_FILE = fractol.h
 
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -I/usr/include -Imlx -O3
 
 OBJS = $(SRCS:.c=.o)
 
-.SILENT:
+# .SILENT:
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	cc -o $(NAME)  $(OBJS)
+	$(CC) $(OBJS) -Lmlx -lmlx -Imlx -lXext -lX11 -lm -lz -o $(NAME)
 $(OBJS): %.o: %.c $(HEAD_FILE)
-	$(CC) $(CFLAGS) -c $< -o
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -rf $(OBJS) $(OBJSDIR_DEBUG)
+	rm -rf $(OBJS)
 
 fclean: clean
-	rm -rf $(NAME) $(NAME_DEBUG)
+	rm -rf $(NAME)
 
 re:fclean all
 	

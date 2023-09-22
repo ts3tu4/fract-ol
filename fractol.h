@@ -16,4 +16,7 @@
 # include <stdlib.h>
 # include <limits.h>
 # include <stdio.h>
+# include "mlx/mlx.h"
+
+
 #endif
