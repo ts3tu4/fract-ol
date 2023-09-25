@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mnanke <mnanke@student.42.fr>              +#+  +:+       +#+         #
+#    By: shinozaki <shinozaki@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/19 18:03:45 by mnanke            #+#    #+#              #
-#    Updated: 2023/09/19 18:11:34 by mnanke           ###   ########.fr        #
+#    Updated: 2023/09/26 02:05:19 by shinozaki        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ CC = cc
 
 HEAD_FILE = fractol.h
 
-CFLAGS = -Wall -Wextra -Werror -I/usr/include -Imlx -O3
+CFLAGS = -Wall -Wextra -Werror
 
 OBJS = $(SRCS:.c=.o)
 
@@ -28,9 +28,9 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(OBJS) -Lmlx -lmlx -Imlx -lXext -lX11 -lm -lz -o $(NAME)
+	$(CC) $(OBJS) -Lmix -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 $(OBJS): %.o: %.c $(HEAD_FILE)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -Imlx -c $< -o $@
 
 clean:
 	rm -rf $(OBJS)
