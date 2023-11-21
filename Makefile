@@ -6,13 +6,14 @@
 #    By: shinozaki <shinozaki@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/19 18:03:45 by mnanke            #+#    #+#              #
-#    Updated: 2023/09/26 23:03:55 by shinozaki        ###   ########.fr        #
+#    Updated: 2023/11/21 18:09:31 by shinozaki        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
 
-SRCS = main.c
+SRCS = main.c\
+		mandelbrot.c
 
 CC = cc
 
