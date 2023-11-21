@@ -6,7 +6,7 @@
 /*   By: shinozaki <shinozaki@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 17:51:57 by mnanke            #+#    #+#             */
-/*   Updated: 2023/11/21 18:09:55 by shinozaki        ###   ########.fr       */
+/*   Updated: 2023/11/21 18:40:57 by shinozaki        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,21 +30,9 @@ int	main(void)
 {
 	void	*mlx;
 	void	*mlx_win;
-	t_data	img;
-	double	a;
-	double	b;
 
 	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 600, 400, "Hello world!");
-	img.img = mlx_new_image(mlx, 600, 400);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-			&img.endian);
-	for (a = C0r-VS; a < C0r+VS; a += 2.0*VS/STEP) {
-		for (b = C0i-VS; b < C0i+VS; b += 2.0*VS/STEP) {
-			printf("%1.14e %1.14e %1.14e\n", a, b, mandelbrot(a, b));
-		}
-		printf("\n"); // これがないとgnuplotでエラーが出る
-	}
-	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
+	mlx_win = mlx_new_window(mlx, 600, 400, "mandelbrot");
+	
 	mlx_loop(mlx);
 }
