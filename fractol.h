@@ -3,21 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shinozaki <shinozaki@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mnanke <mnanke@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 17:52:17 by mnanke            #+#    #+#             */
-/*   Updated: 2023/11/21 18:52:20 by shinozaki        ###   ########.fr       */
+/*   Updated: 2024/01/03 01:07:23 by mnanke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
+# define WIDTH 800
+# define HEIGHT 800
+# define MAX_ITER 1000
 
 # include <stdlib.h>
 # include <limits.h>
 # include <stdio.h>
-# include "mlx/mlx.h"
+# include "mlx.h"
 
-double	mandelbrot(double a, double b);
-void	draw_mandelbrot(void *mlx, void *mlx_win, int width, int height);
+int mandelbrot(double real, double imag);
+
 #endif
