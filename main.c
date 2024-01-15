@@ -6,26 +6,21 @@
 /*   By: mnanke <mnanke@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 17:51:57 by mnanke            #+#    #+#             */
-/*   Updated: 2024/01/15 16:07:38 by mnanke           ###   ########.fr       */
+/*   Updated: 2024/01/15 19:12:24 by mnanke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void put_pixel_to_image(void *img, int x, int y, int red, int green, int blue)
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
-    char *data;
-    int bpp;
-    int sizeline;
-    int endian;
-    data = mlx_get_data_addr(img, &bpp, &sizeline, &endian);
-    int i = (x * 4) + (y * sizeline);
-    data[i] = blue;
-    data[i + 1] = green;
-    data[i + 2] = red;
+	char	*dst;
+
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
 }
 
-void	put_image(void *img)
+void	put_image(t_data *img)
 {
 	int		x;
 	int		y;
@@ -37,12 +32,16 @@ void	put_image(void *img)
 	y = 0;
 	while (x < WIDTH)
 	{
+		y = 0;
 		while (y < HEIGHT)
 		{
 			real = (x - WIDTH / 2.0) * 4.0 / WIDTH;
 			imag = (y - HEIGHT / 2.0) * 4.0 / HEIGHT;
 			mandelbrot_result = mandelbrot(real, imag);
-			put_pixel_to_image(img, x, y, 0, 0, 0);
+			if (mandelbrot_result == MAX_ITER)
+				my_mlx_pixel_put(img, x, y, mandelbrot_result * 255);
+			else
+				my_mlx_pixel_put(img, x, y, mandelbrot_result * 0x0000FF);
 			y++;
 		}
 		x++;
@@ -53,13 +52,15 @@ int	main(void)
 {
 	void	*mlx;
 	void	*win;
-	void	*img;
+	t_data	img;
 
 	mlx = mlx_init();
 	win = mlx_new_window(mlx, WIDTH, HEIGHT, "Mandelbrot");
-	img = mlx_new_image(mlx, WIDTH, HEIGHT);
-	put_image(img);
-	mlx_put_image_to_window(mlx, win, img, 0, 0);
+	img.img = mlx_new_image(mlx, WIDTH, HEIGHT);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, \
+		&img.line_length, &img.endian);
+	put_image(&img);
+	mlx_put_image_to_window(mlx, win, img.img, 0, 0);
 	mlx_loop(mlx);
 	return (0);
 }

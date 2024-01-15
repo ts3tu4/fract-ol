@@ -6,7 +6,7 @@
 /*   By: mnanke <mnanke@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 17:52:17 by mnanke            #+#    #+#             */
-/*   Updated: 2024/01/15 15:22:58 by mnanke           ###   ########.fr       */
+/*   Updated: 2024/01/15 16:29:49 by mnanke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,15 @@
 # include <limits.h>
 # include <stdio.h>
 # include "mlx.h"
+
+typedef struct s_data
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}	t_data;
 
 int	mandelbrot(double real, double imag);
 

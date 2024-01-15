@@ -6,27 +6,31 @@
 /*   By: mnanke <mnanke@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:14:46 by shinozaki         #+#    #+#             */
-/*   Updated: 2024/01/03 01:03:19 by mnanke           ###   ########.fr       */
+/*   Updated: 2024/01/15 19:29:46 by mnanke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int mandelbrot(double real, double imag)
+int	mandelbrot(double real, double imag)
 {
-    int n;
-    double r = 0.0;
-    double i = 0.0;
+	int		n;
+	double	r1;
+	double	i1;
+	double	r2;
+	double	i2;
 
-    for(n = 0; n < MAX_ITER; n++)
-    {
-        double r2 = r * r;
-        double i2 = i * i;
-        if (r2 + i2 > 4.0)
-            break;
-        i = 2 * r * i + imag;
-        r = r2 - i2 + real;
-    }
-
-    return n;
+	r1 = 0.0;
+	i1 = 0.0;
+	while (n < MAX_ITER)
+	{
+		r2 = r1 * r1;
+		i2 = i1 * i1;
+		if (r2 + i2 > 4.0)
+			break ;
+		i1 = 2 * r1 * i1 + imag;
+		r1 = r2 - i2 + real;
+		n++;
+	}
+	return (n);
 }
