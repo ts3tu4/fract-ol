@@ -6,7 +6,7 @@
 /*   By: mnanke <mnanke@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 17:52:17 by mnanke            #+#    #+#             */
-/*   Updated: 2024/01/03 01:07:23 by mnanke           ###   ########.fr       */
+/*   Updated: 2024/01/15 15:22:58 by mnanke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@
 # include <stdio.h>
 # include "mlx.h"
 
-int mandelbrot(double real, double imag);
+int	mandelbrot(double real, double imag);
 
 #endif

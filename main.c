@@ -6,7 +6,7 @@
 /*   By: mnanke <mnanke@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 17:51:57 by mnanke            #+#    #+#             */
-/*   Updated: 2024/01/13 19:54:41 by mnanke           ###   ########.fr       */
+/*   Updated: 2024/01/15 16:07:38 by mnanke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,32 +24,44 @@ void put_pixel_to_image(void *img, int x, int y, int red, int green, int blue)
     data[i + 1] = green;
     data[i + 2] = red;
 }
-int main()
+
+void	put_image(void *img)
 {
-    void *mlx;
-    void *win;
-    void *img;
+	int		x;
+	int		y;
+	double	real;
+	double	imag;
+	int		mandelbrot_result;
 
-    mlx = mlx_init();
-    win = mlx_new_window(mlx, WIDTH, HEIGHT, "Mandelbrot");
-    img = mlx_new_image(mlx, WIDTH, HEIGHT);
+	x = 0;
+	y = 0;
+	while (x < WIDTH)
+	{
+		while (y < HEIGHT)
+		{
+			real = (x - WIDTH / 2.0) * 4.0 / WIDTH;
+			imag = (y - HEIGHT / 2.0) * 4.0 / HEIGHT;
+			mandelbrot_result = mandelbrot(real, imag);
+			put_pixel_to_image(img, x, y, 0, 0, 0);
+			y++;
+		}
+		x++;
+	}
+}
 
-    for(int x = 0; x < WIDTH; x++)
-    {
-        for(int y = 0; y < HEIGHT; y++)
-        {
-            double real = (x - WIDTH / 2.0) * 4.0 / WIDTH;
-            double imag = (y - HEIGHT / 2.0) * 4.0 / HEIGHT;
-            int mandelbrot_result = mandelbrot(real, imag); // マンデルブロット集合の計算結果
-            int normalized_result = (mandelbrot_result % 256); // 計算結果を0から255の範囲に正規化
-            put_pixel_to_image(img, x, y, normalized_result, 0, 0); // 赤色成分に設定
-        }
-    }
+int	main(void)
+{
+	void	*mlx;
+	void	*win;
+	void	*img;
 
-    mlx_put_image_to_window(mlx, win, img, 0, 0);
-    mlx_loop(mlx);
-
-    return 0;
+	mlx = mlx_init();
+	win = mlx_new_window(mlx, WIDTH, HEIGHT, "Mandelbrot");
+	img = mlx_new_image(mlx, WIDTH, HEIGHT);
+	put_image(img);
+	mlx_put_image_to_window(mlx, win, img, 0, 0);
+	mlx_loop(mlx);
+	return (0);
 }
 
 // __attribute__((destructor)) static void destructor()
