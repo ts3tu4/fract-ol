@@ -6,7 +6,7 @@
 /*   By: mnanke <mnanke@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 17:51:57 by mnanke            #+#    #+#             */
-/*   Updated: 2024/01/23 01:59:43 by mnanke           ###   ########.fr       */
+/*   Updated: 2024/01/24 17:28:11 by mnanke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,18 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int result)
 	int		green;
 	int		blue;
 
-	green = 0;
-	blue = 0;
 	if (result != MAX_ITER)
-		red = result % 256;
-	else
+	{
+		green = 0;
+		blue = result * 20;
 		red = 0;
+	}
+	else
+	{
+		green = 0;
+		blue = 0;
+		red = 0;
+	}
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 	*(unsigned int *)dst = (red << 16) | (green << 8) | blue;
 }
