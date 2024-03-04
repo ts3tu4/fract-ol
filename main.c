@@ -6,7 +6,7 @@
 /*   By: mnanke <mnanke@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 17:51:57 by mnanke            #+#    #+#             */
-/*   Updated: 2024/01/24 17:28:11 by mnanke           ###   ########.fr       */
+/*   Updated: 2024/03/04 15:13:17 by mnanke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int result)
 
 	if (result != MAX_ITER)
 	{
-		green = 0;
+		green = result * 5;
 		blue = result * 20;
 		red = 0;
 	}
