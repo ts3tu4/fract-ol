@@ -6,7 +6,7 @@
 /*   By: mnanke <mnanke@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 17:51:57 by mnanke            #+#    #+#             */
-/*   Updated: 2024/03/04 15:13:17 by mnanke           ###   ########.fr       */
+/*   Updated: 2024/03/04 15:51:43 by mnanke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ int	main(void)
 		&img.line_length, &img.endian);
 	put_image(&img);
 	mlx_put_image_to_window(mlx, win, img.img, 0, 0);
+	mlx_hook(win, 17, 0, close_program, (void *)0);
 	mlx_loop(mlx);
 	return (0);
 }
