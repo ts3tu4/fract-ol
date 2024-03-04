@@ -6,7 +6,7 @@
 /*   By: mnanke <mnanke@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 17:52:17 by mnanke            #+#    #+#             */
-/*   Updated: 2024/01/15 16:29:49 by mnanke           ###   ########.fr       */
+/*   Updated: 2024/01/24 16:34:52 by mnanke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FRACTOL_H
 # define WIDTH 800
 # define HEIGHT 800
-# define MAX_ITER 1000
+# define MAX_ITER 800
 
 # include <stdlib.h>
 # include <limits.h>

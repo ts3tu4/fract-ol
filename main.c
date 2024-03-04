@@ -6,18 +6,33 @@
 /*   By: mnanke <mnanke@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 17:51:57 by mnanke            #+#    #+#             */
-/*   Updated: 2024/01/15 19:12:24 by mnanke           ###   ########.fr       */
+/*   Updated: 2024/03/04 15:13:17 by mnanke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+void	my_mlx_pixel_put(t_data *data, int x, int y, int result)
 {
 	char	*dst;
+	int		red;
+	int		green;
+	int		blue;
 
+	if (result != MAX_ITER)
+	{
+		green = result * 5;
+		blue = result * 20;
+		red = 0;
+	}
+	else
+	{
+		green = 0;
+		blue = 0;
+		red = 0;
+	}
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
+	*(unsigned int *)dst = (red << 16) | (green << 8) | blue;
 }
 
 void	put_image(t_data *img)
@@ -38,10 +53,7 @@ void	put_image(t_data *img)
 			real = (x - WIDTH / 2.0) * 4.0 / WIDTH;
 			imag = (y - HEIGHT / 2.0) * 4.0 / HEIGHT;
 			mandelbrot_result = mandelbrot(real, imag);
-			if (mandelbrot_result == MAX_ITER)
-				my_mlx_pixel_put(img, x, y, mandelbrot_result * 255);
-			else
-				my_mlx_pixel_put(img, x, y, mandelbrot_result * 0x0000FF);
+			my_mlx_pixel_put(img, x, y, mandelbrot_result);
 			y++;
 		}
 		x++;
