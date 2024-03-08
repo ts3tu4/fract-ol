@@ -6,7 +6,7 @@
 /*   By: mnanke <mnanke@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 17:52:17 by mnanke            #+#    #+#             */
-/*   Updated: 2024/03/04 15:51:53 by mnanke           ###   ########.fr       */
+/*   Updated: 2024/03/05 00:12:42 by mnanke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,18 @@ typedef struct s_data
 	int		endian;
 }	t_data;
 
+typedef struct s_database
+{
+	void	*mlx;
+	void	*win;
+	double	zoom_factor;
+	double	center_x;
+	double	center_y;
+}	t_database;
+
 int	mandelbrot(double real, double imag);
 int	close_program(void *param);
+int	shortcutmain(t_database *fractol);
+int	zoooom(int button, int x, int y, t_database *fractol);
 
 #endif
