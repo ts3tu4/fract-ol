@@ -6,11 +6,18 @@
 /*   By: mnanke <mnanke@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 17:51:57 by mnanke            #+#    #+#             */
-/*   Updated: 2024/03/08 17:39:51 by mnanke           ###   ########.fr       */
+/*   Updated: 2024/03/08 18:25:08 by mnanke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+void	check_input(int argc, char **argv, t_database fractol)
+{
+	if (argc > 2 || argc < 4)
+		ft_error();
+	
+}
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int result)
 {
@@ -63,7 +70,7 @@ void	put_image(t_data *img, t_database *fractol)
 	}
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_database	*fractol;
 	t_data		img;
@@ -71,6 +78,7 @@ int	main(void)
 	fractol = malloc(sizeof(t_database));
 	if (fractol == NULL)
 		exit(1);
+	check_input(argc, argv, fractol);
 	fractol->mlx = mlx_init();
 	fractol->win = mlx_new_window(fractol->mlx, WIDTH, HEIGHT, "Mandelbrot");
 	fractol->zoom_factor = 1.0;

@@ -6,7 +6,7 @@
 /*   By: mnanke <mnanke@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 17:52:17 by mnanke            #+#    #+#             */
-/*   Updated: 2024/03/05 00:12:42 by mnanke           ###   ########.fr       */
+/*   Updated: 2024/03/08 18:11:22 by mnanke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 # define WIDTH 800
 # define HEIGHT 800
 # define MAX_ITER 800
+# define IMAG_CONSTANT 0.156
+# define REAL_CONSTANT 0.8
 
 # include <stdlib.h>
 # include <limits.h>
@@ -44,5 +46,5 @@ int	mandelbrot(double real, double imag);
 int	close_program(void *param);
 int	shortcutmain(t_database *fractol);
 int	zoooom(int button, int x, int y, t_database *fractol);
-
+int	julia(double real, double imag);
 #endif

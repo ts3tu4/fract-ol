@@ -6,14 +6,14 @@
 #    By: mnanke <mnanke@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/19 18:03:45 by mnanke            #+#    #+#              #
-#    Updated: 2024/03/04 15:42:16 by mnanke           ###   ########.fr        #
+#    Updated: 2024/03/08 17:58:39 by mnanke           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
 
 SRCS = main.c\
-		mandelbrot.c\
+		set.c\
 		shortcut.c
 
 CC = cc
