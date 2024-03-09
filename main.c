@@ -6,17 +6,26 @@
 /*   By: mnanke <mnanke@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 17:51:57 by mnanke            #+#    #+#             */
-/*   Updated: 2024/03/08 18:25:08 by mnanke           ###   ########.fr       */
+/*   Updated: 2024/03/09 20:17:15 by mnanke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	check_input(int argc, char **argv, t_database fractol)
+void	check_input_and_set(int argc, char **argv, t_database *fractol)
 {
 	if (argc > 2 || argc < 4)
 		ft_error();
-	
+	if (ft_strcmp(argv[1], "mandelbrot") && !argv[2])
+	{
+		fractol->set = 0;
+	}
+	else if (ft_strcmp(argv[1], "julia") && argv[2] && argv[3])
+	{
+		fractol->set = 1;
+	}
+	else
+		ft_error();
 }
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int result)
@@ -48,7 +57,7 @@ void	put_image(t_data *img, t_database *fractol)
 	int		y;
 	double	real;
 	double	imag;
-	int		mandelbrot_result;
+	int		result;
 
 	x = 0;
 	y = 0;
@@ -62,8 +71,11 @@ void	put_image(t_data *img, t_database *fractol)
 				fractol->zoom_factor / WIDTH + fractol->center_x;
 			imag = (y - HEIGHT / 2.0) * 4.0 * \
 				fractol->zoom_factor / HEIGHT + fractol->center_y;
-			mandelbrot_result = mandelbrot(real, imag);
-			my_mlx_pixel_put(img, x, y, mandelbrot_result);
+			if (fractol->set == 0)
+				result = mandelbrot(real, imag);
+			else
+				result = julia(real, imag);
+			my_mlx_pixel_put(img, x, y, result);
 			y++;
 		}
 		x++;
@@ -78,9 +90,9 @@ int	main(int argc, char **argv)
 	fractol = malloc(sizeof(t_database));
 	if (fractol == NULL)
 		exit(1);
-	check_input(argc, argv, fractol);
+	check_input_and_set(argc, argv, fractol);
 	fractol->mlx = mlx_init();
-	fractol->win = mlx_new_window(fractol->mlx, WIDTH, HEIGHT, "Mandelbrot");
+	fractol->win = mlx_new_window(fractol->mlx, WIDTH, HEIGHT, argv[1]);
 	fractol->zoom_factor = 1.0;
 	fractol->center_x = 0.0;
 	fractol->center_y = 0.0;
