@@ -6,7 +6,7 @@
 #    By: mnanke <mnanke@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/19 18:03:45 by mnanke            #+#    #+#              #
-#    Updated: 2024/03/08 17:58:39 by mnanke           ###   ########.fr        #
+#    Updated: 2024/03/09 20:08:27 by mnanke           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME = fractol
 
 SRCS = main.c\
 		set.c\
-		shortcut.c
+		shortcut.c\
+		utill.c
 
 CC = cc
 
