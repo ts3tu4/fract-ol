@@ -6,7 +6,7 @@
 /*   By: mnanke <mnanke@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:14:46 by shinozaki         #+#    #+#             */
-/*   Updated: 2024/03/08 18:04:26 by mnanke           ###   ########.fr       */
+/*   Updated: 2024/03/20 18:42:12 by mnanke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,7 @@ int	mandelbrot(double real, double imag)
 	return (n);
 }
 
-
-int	julia(double real, double imag)
+int	julia(double real, double imag, t_database *fractol)
 {
 	int		n;
 	double	r1;
@@ -54,8 +53,8 @@ int	julia(double real, double imag)
 		i2 = i1 * i1;
 		if (r2 + i2 > 4.0)
 			break ;
-		i1 = 2 * r1 * i1 + IMAG_CONSTANT;
-		r1 = r2 - i2 + REAL_CONSTANT;
+		i1 = 2 * r1 * i1 + fractol->d_b;
+		r1 = r2 - i2 + fractol->d_a;
 		n++;
 	}
 	return (n);
