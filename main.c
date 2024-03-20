@@ -6,7 +6,7 @@
 /*   By: mnanke <mnanke@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 17:51:57 by mnanke            #+#    #+#             */
-/*   Updated: 2024/03/10 12:57:01 by mnanke           ###   ########.fr       */
+/*   Updated: 2024/03/20 17:22:28 by mnanke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	check_input_and_set(int argc, char **argv, t_database *fractol)
 	else if (ft_strcmp(argv[1], "julia") && argv[2] && argv[3])
 	{
 		fractol->set = 1;
-		fractol->d_x = atof(argv[2]);
-		fractol->d_y = atof(argv[3]);
+		fractol->d_a = atof(argv[2]);
+		fractol->d_b = atof(argv[3]);
 	}
 	else
 		exit(0);
