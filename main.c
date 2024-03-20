@@ -6,7 +6,7 @@
 /*   By: mnanke <mnanke@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 17:51:57 by mnanke            #+#    #+#             */
-/*   Updated: 2024/03/20 17:22:28 by mnanke           ###   ########.fr       */
+/*   Updated: 2024/03/20 18:42:24 by mnanke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	check_input_and_set(int argc, char **argv, t_database *fractol)
 {
-	if (argc > 2 && argc < 4)
+	if (argc != 2 && argc != 4)
 		exit(0);
-	if (ft_strcmp(argv[1], "mandelbrot") && !argv[2])
+	if (!ft_strcmp(argv[1], "mandelbrot") && !argv[2])
 		fractol->set = 0;
-	else if (ft_strcmp(argv[1], "julia") && argv[2] && argv[3])
+	else if (!ft_strcmp(argv[1], "julia") && argv[2] && argv[3])
 	{
 		fractol->set = 1;
 		fractol->d_a = atof(argv[2]);
