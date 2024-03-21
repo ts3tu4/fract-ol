@@ -6,7 +6,7 @@
 /*   By: mnanke <mnanke@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 17:52:17 by mnanke            #+#    #+#             */
-/*   Updated: 2024/03/20 17:26:21 by mnanke           ###   ########.fr       */
+/*   Updated: 2024/03/22 00:31:49 by mnanke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,6 @@ typedef struct s_data
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-}	t_data;
-
-typedef struct s_database
-{
 	void	*mlx;
 	void	*win;
 	double	zoom_factor;
@@ -43,12 +39,13 @@ typedef struct s_database
 	int		set;
 	double	d_a;
 	double	d_b;
-}	t_database;
+}	t_data;
 
-int	mandelbrot(double real, double imag);
-int	close_program(void *param);
-int	shortcutmain(t_database *fractol);
-int	zoooom(int button, int x, int y, t_database *fractol);
-int	julia(double real, double imag, t_database *fractol);
-int	ft_strcmp(const char *s1, const char *s2);
+int		mandelbrot(double real, double imag);
+int		close_program(void *param);
+int		shortcutmain(t_data *fractol);
+int		zoooom(int button, int x, int y, t_data *fractol);
+int		julia(double real, double imag, t_data *fractol);
+int		ft_strcmp(const char *s1, const char *s2);
+void	ft_error(t_data *fractol);
 #endif
