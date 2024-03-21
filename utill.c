@@ -6,7 +6,7 @@
 /*   By: mnanke <mnanke@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 19:53:22 by mnanke            #+#    #+#             */
-/*   Updated: 2024/03/21 23:56:11 by mnanke           ###   ########.fr       */
+/*   Updated: 2024/03/22 00:27:56 by mnanke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ double	ft_atof_process(char *s, double dot, int i, double rtn)
 		{
 			if (s[i] == '.')
 				break ;
-			ft_error();
+			exit(0);
 		}
 		rtn = rtn * 10 + s[i] - '0';
 		i++;
@@ -50,7 +50,7 @@ double	ft_atof_process(char *s, double dot, int i, double rtn)
 		while (s[i])
 		{
 			if (!ft_isnum(s[i]))
-				ft_error();
+				exit(0);
 			rtn = rtn * 10 + s[i] - '0';
 			i++;
 			dot *= 10;

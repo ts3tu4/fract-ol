@@ -6,13 +6,13 @@
 /*   By: mnanke <mnanke@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 15:34:22 by mnanke            #+#    #+#             */
-/*   Updated: 2024/03/08 17:37:59 by mnanke           ###   ########.fr       */
+/*   Updated: 2024/03/22 00:17:04 by mnanke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	shortcutmain(t_database *fractol)
+int	shortcutmain(t_data *fractol)
 {
 	mlx_hook(fractol->win, 17, 0, close_program, (void *)0);
 	mlx_mouse_hook(fractol->win, zoooom, fractol);
@@ -26,7 +26,7 @@ int	close_program(void *param)
 	return (0);
 }
 
-int	zoooom(int button, int x, int y, t_database *fractol)
+int	zoooom(int button, int x, int y, t_data *fractol)
 {
 	if (button == 5)
 	{
