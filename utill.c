@@ -6,7 +6,7 @@
 /*   By: mnanke <mnanke@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 19:53:22 by mnanke            #+#    #+#             */
-/*   Updated: 2024/03/21 23:43:35 by mnanke           ###   ########.fr       */
+/*   Updated: 2024/03/21 23:56:11 by mnanke           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,16 @@ int	ft_strcmp(const char *s1, const char *s2)
 	return (0);
 }
 
+int	ft_isnum(char c)
+{
+	return (c >= '0' && c <= '9');
+}
+
 double	ft_atof_process(char *s, double dot, int i, double rtn)
 {
 	while (s[i])
 	{
-		if (!ft_isdigit(s[i]))
+		if (!ft_isnum(s[i]))
 		{
 			if (s[i] == '.')
 				break ;
@@ -44,7 +49,7 @@ double	ft_atof_process(char *s, double dot, int i, double rtn)
 		i++;
 		while (s[i])
 		{
-			if (!ft_isdigit(s[i]))
+			if (!ft_isnum(s[i]))
 				ft_error();
 			rtn = rtn * 10 + s[i] - '0';
 			i++;
